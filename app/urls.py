@@ -1,15 +1,18 @@
 from django.urls import path
-from .views_fbv import car_list_create, car_detail
-from .views_cbv import (
-    CarListCreateAPIView,
-    CarRetrieveUpdateDestroyAPIView
+from .views import (
+    CategoryListCreateView,
+    CategoryDetailView,
+    ProductListCreateView,
+    ProductDetailView
 )
 
+
+
 urlpatterns = [
-    path('cars/', car_list_create),
-    path('cars/<int:pk>/', car_detail),
-    path('cbv/cars/', CarListCreateAPIView.as_view()),
-    path('cbv/cars/<int:pk>/', CarRetrieveUpdateDestroyAPIView.as_view()),
+    path('categories/', CategoryListCreateView.as_view()),
+    path('categories/<int:pk>/', CategoryDetailView.as_view()),
+    path('products/', ProductListCreateView.as_view()),
+    path('products/<int:pk>/', ProductDetailView.as_view()),
 ]
 
 
