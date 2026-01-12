@@ -41,3 +41,6 @@ def car_detail(request, pk):
     if request.method == 'DELETE':
         car.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
+
+
+
