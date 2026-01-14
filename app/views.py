@@ -2,6 +2,15 @@
 from rest_framework import generics
 from .models import Category, Product
 from .serializers import CategorySerializer, ProductSerializer
+from rest_framework.permissions import BasePermission
+from .permissions import CanUpdate4Hours
+from rest_framework.viewsets import ModelViewSet
+
+
+class ProductViewSet(generics.RetrieveDestroyAPIView):
+    queryset = Product.objects.all()
+    serializer_class = ProductSerializer
+    permission_classes = [CanUpdate4Hours]
 
 
 
@@ -25,3 +34,5 @@ class ProductListCreateView(generics.ListCreateAPIView):
 class ProductDetailView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Product.objects.prefetch_related('images')
     serializer_class = ProductSerializer
+
+
